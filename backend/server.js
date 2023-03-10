@@ -1,5 +1,7 @@
+
+
 const express = require('express')
-const colors = require ('colors')
+const colors = require('colors')
 const dotenv = require('dotenv').config()
 const { errorHandler } = require('./middleware/errorMiddleware')
 const connectDB = require('./config/db')
@@ -14,4 +16,6 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/api/tareas', require('./routes/tareasRoutes'))
 
-app.listen(port, ()=> console.log(`Server iniciando en el puerto ${port}`))
+app.use(errorHandler)
+
+app.listen(port, () => console.log(`Server iniciado en el puerto ${port}`))
